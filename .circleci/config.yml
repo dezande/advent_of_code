@@ -1,0 +1,37 @@
+# Ruby CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-ruby/ for more details
+#
+version: 2.1
+orbs:
+  ruby: cimg/ruby@3.0.2
+
+jobs:
+  test:
+    docker:
+      - image: cimg/ruby:3.0.2
+    
+    steps:
+      - checkout
+
+      - run:
+          name: install minitest
+          command: gem install minitest
+      
+      - run:
+          name: test all
+          command:
+            foreach n ( $( find $PWD -name "*test.rb" ) )
+              ruby $n
+            end
+  
+  rubocop:
+    docker:
+      - image: cimg/ruby:3.0.2
+
+    step:
+      - checkout
+
+      - run:
+          name: install rubocop
+          command: rubocop
