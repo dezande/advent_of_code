@@ -16,10 +16,7 @@ class Elevator
   end
 
   def first_step
-    parenthesis
-      .chars
-      .map { |char| run(char) }
-      .sum
+    parenthesis.scan(/\(/).count - parenthesis.scan(/\)/).count
   end
 
   def second_step
