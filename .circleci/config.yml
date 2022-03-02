@@ -4,7 +4,7 @@
 #
 version: 2.1
 orbs:
-  ruby: cimg/ruby@3.0.2
+  ruby: circleci/ruby@1.4.0
 
 jobs:
   test:
@@ -29,9 +29,16 @@ jobs:
     docker:
       - image: cimg/ruby:3.0.2
 
-    step:
+    steps:
       - checkout
 
       - run:
           name: install rubocop
           command: rubocop
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - test
+      - rubocop
+
