@@ -1,0 +1,9 @@
+#!/bin/bash
+
+TEST_FILE=$(find $PWD -name "*test.rb")
+
+for n in $TEST_FILE
+do
+	ruby $n
+done
+
