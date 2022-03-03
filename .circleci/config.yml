@@ -21,7 +21,8 @@ jobs:
       - run:
           name: test all
           command: |
-            find $PWD -name "*test.rb"
+            find $PWD -name "*test.rb" >> $file_test
+            echo $file_test
   
   rubocop:
     docker:
