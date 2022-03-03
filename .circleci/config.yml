@@ -21,7 +21,7 @@ jobs:
       - run:
           name: test all
           command: |
-            foreach n ( $(find $PWD -name "*test.rb") )
+            foreach n ($(find $PWD -name "*test.rb"))
               ruby $n
             end
   
